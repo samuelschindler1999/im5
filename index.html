@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buchung Multimedia Dienstleistung Samuel Schindler</title>
+    <link rel="stylesheet" type="text/css" href="src/styles/styles.css">
+</head>
+<body>
+
+    <div class="background-image" id="background-image">
+      </div>
+
+    <div class="container">
+        <form id="bookingForm" action="booking.php" method="post">
+            <!-- Schritt 1: Service-Auswahl -->
+            <div class="step" id="step1">
+                <h2>Serviceauswahl</h2>
+                <select id="serviceType" name="serviceType" required>
+                    <option value="">Bitte auswählen</option>
+                    <option value="photos">Fotografie</option>
+                    <option value="video">Videografie</option>
+                    <option value="both">Beides</option>
+                </select>
+                <button type="button" onclick="showNextStep(2)">Weiter</button>
+            </div>
+
+            <!-- Schritt 2: Verwendungszweck -->
+            <div class="step" id="step2" style="display:none;">
+                <h2>Verwendungszweck</h2>
+                <textarea id="purpose" name="purpose" placeholder="Beschreiben Sie Ihr Projekt" required></textarea>
+                <button type="button" onclick="showNextStep(3)">Weiter</button>
+            </div>
+
+            <!-- Schritt 3: Wunschtermine -->
+            <div class="step" id="step3" style="display:none;">
+                <h2>Wunschtermine</h2>
+                <input type="date" id="date1" name="date1" required>
+                <input type="date" id="date2" name="date2">
+                <input type="date" id="date3" name="date3">
+                <button type="button" onclick="showNextStep(4)">Weiter</button>
+            </div>
+
+            <!-- Schritt 4: Budget -->
+            <div class="step" id="step4" style="display:none;">
+                <h2>Budget in CHF</h2>
+                <input type="range" id="budget" name="budget" min="0" max="10000" step="100" value="5000" oninput="updateBudgetValue(this.value)">
+                <span id="budgetValue">5000 CHF</span>
+                <div class="spacer"></div>
+                <button type="button" onclick="showNextStep(5)">Weiter</button>
+            </div>
+
+            <!-- Schritt 5: Kontaktinformationen -->
+            <div class="step" id="step5" style="display:none;">
+                <h2>Kontaktinformationen</h2>
+                <input type="email" id="email" name="email" placeholder="E-Mail-Adresse" required>
+                <input type="tel" id="phone" name="phone" placeholder="Mobilnummer" required pattern="^\+41\s?\d{9}$">
+                <button type="button" onclick="showNextStep(6)">Weiter</button>
+            </div>
+
+            <!-- Schritt 6: Bestätigung -->
+            <div class="step" id="step6" style="display:none;">
+                <h2>Überprüfen Sie Ihre Eingaben</h2>
+                <div id="confirmationSummary"></div>
+                <button type="button" onclick="submitForm()">Anfrage senden</button>
+            </div>
+
+            <!-- Schritt 7: Antwort -->
+            <div class="step" id="step6" style="display:none;">
+                <h2>Vielen Dank für Ihre Anfrage</h2>
+                 <p>Wir haben Ihre Anfrage erhalten und werden uns so schnell wie möglich bei Ihnen melden.</p>
+            </div>
+            
+        </form>
+    </div>
+
+    <script src="src/scripts/script.js"></script>
+</body>
+</html>
